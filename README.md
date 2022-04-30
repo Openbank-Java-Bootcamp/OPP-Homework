@@ -1,4 +1,4 @@
-# :joystick: :elf_woman: :crossed_swords: :mage:    OPP :mage: :crossed_swords: :elf_woman: :joystick:
+#   OPP 
 
 ### Authors
 
