@@ -1,5 +1,5 @@
 package classes;
 
-public class Contact extends Lead{
+public class Contact {
 
 }

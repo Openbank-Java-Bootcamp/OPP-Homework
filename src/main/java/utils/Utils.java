@@ -1,4 +1,6 @@
-package classes;
+package utils;
+
+import classes.Lead;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +12,18 @@ public class Utils {
 
     private List<Lead> leads = new ArrayList<>();
 
-        ///////////////////////////// User input /////////////////////////////////
+    public static void printLikeError(String message) {
+        System.out.println((char) 27 + "[31m" + message);
+        System.out.print((char) 27 + "[39m");
+    }
+
+    /**
+     * Method to catch errors from user int input
+     *
+     * @param prompt      will be the string that appears in CRM
+     * @param userChoices maximum number of choices the user has
+     * @return the number the user chose
+     */
     public static int readInt(String prompt, int userChoices) {
         int input;
 
@@ -20,13 +33,54 @@ public class Utils {
                 input = Integer.parseInt(scanner.next());
             } catch (Exception e) {
                 input = -1;
-                System.out.println("Please enter a valid command!");
+                System.out.println("Please enter a valid number!");
             }
         } while (input < 1 || input > userChoices);
         return input;
     }
 
+    /////////////////////////////////// Method to catch errors from user int input /////////////////////////////////////
+
+    public static String readString(String prompt) {
+        String input = null;
+
+        do {
+            System.out.println(prompt);
+            try {
+                input = scanner.next();
+            } catch (Exception e) {
+                System.out.println("Please enter a valid integer!");
+            }
+        } while (scanner.hasNextDouble() || scanner.hasNextInt() || scanner.hasNextFloat() || scanner.hasNextByte() ||
+                scanner.hasNextLong() || scanner.hasNextBoolean());
+        return input;
+    }
+
+
+    /**
+     * Method to catch errors from user int input with limits
+     *
+     * @param prompt will be the string that appears in CRM
+     * @param min    limits
+     * @param max
+     * @return the number the user chose
+     */
+    private static int readIntLimited(String prompt, int min, int max) {
+        int input = 0;
+        do {
+            System.out.println(prompt);
+            try {
+                input = Integer.parseInt(scanner.next());
+            } catch (Exception e) {
+                System.out.println("Please enter a valid integer!");
+            }
+        } while (input < min || input > max);
+        return input;
+    }
+
+
     ///////////////////////////// CLear console /////////////////////////////////
+
     public static void clearConsole() {
         for (int i = 0; i < 10; i++) {
             System.out.println();
@@ -59,47 +113,20 @@ public class Utils {
         System.out.println(title);
         anythingToContinue();
 
-
-        //credits();
-
-        //into();
-
-        //naming both parties who will battle
-//        clearConsole();
-//        System.out.println("\n ✨ Go ahead, create your First Party ✨ \n");
-//        printSeparator(30);
-//        party1 = new Party(setAttribute("Name the First Party which will follow you to battle: ",
-//                "Party name"));
-//        clearConsole();
-//        printHeading("\n\n\n ✨ Your Party  ↂ" + party1.getPartyName() + "ↂ was Created ✨ \n\n\n");
-//        printSeparator(30);
-//
-//        clearConsole();
-//        printHeading("  \nGet ready to create the second party!\n");
-//        anythingToContinue();
-//
-//        clearConsole();
-//        System.out.println("\n ✨ Go ahead, create your Second Party ✨ \n");
-//        party2 = new Party(setAttribute("\n -> Name the Second Party which will follow you to battle: ", "Party name"));
-//
-//        clearConsole();
-//        printHeading("\n\n\n ✨ Your Party  ↂ" + party2.getPartyName() + "ↂ was Created ✨ \n\n\n");
-//        anythingToContinue();
     }
 
     ////////////////////////////////New Lead Menu ////////////////////////////////////////////////
 
     public void addNewLead(Lead newLead) {
-                leads.add(newLead);
+        leads.add(newLead);
     }
 
     ///////////////////////////////Show Lead Menu ///////////////////////////////////////////////
-    public void showLeads(){
+    public void showLeads() {
         for (Lead lead : leads) {
-           System.out.println(leads.toString());
+            System.out.println(leads.toString());
         }
     }
-
 
 
 }
