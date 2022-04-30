@@ -117,7 +117,7 @@ public class Opportunity {
         printHeading();
         boolean quantitySet = false;
         int quantity = 0;
-
+        //TODO Pregunta si está bien pero no le chequea que sea un init positivo. Ver si lo hago con algo del Utils
         do {
             printHeading(header);
             quantity = scanner.next(); //TODO ver si lo ponemos en utils o definirlo aca
@@ -144,6 +144,8 @@ public class Opportunity {
         System.out.println("(3) CLOSED_LOST");
     }
 
-
-
+    @Override    public String toString() {
+        return "Opportunity, id : %s, product: %s, quantity : %s, decisionMaker: %, status: %" +
+                " \n==============\n".formatted(id, product, quantity, decisionMaker, status);
+    }
 }
