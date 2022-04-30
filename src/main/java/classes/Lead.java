@@ -21,7 +21,7 @@ public class Lead {
     }
 
 
-    public Lead getName() {
+    public String getName() {
         return name;
     }
 
