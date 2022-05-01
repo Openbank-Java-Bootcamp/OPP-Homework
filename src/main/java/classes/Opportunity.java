@@ -2,13 +2,15 @@ package classes;
 
 import enums.Product;
 import enums.Status;
-import lombok.NoArgsConstructor;
+import utils.Utils;
 
 import java.util.UUID;
 
+import static utils.Input.promptIntWithValidation;
+import static utils.Utils.printHeading;
+import static utils.Utils.readInt;
 import static utils.Utils.*;
 
-@NoArgsConstructor
 public class Opportunity {
     private String id;
     private Product product;
@@ -68,6 +70,7 @@ public class Opportunity {
 
     ///////////////////////////////////////////////////////New Opportunity///////////////////////////////////////
     public void newOpportunity(Contact leadContact){
+        int quantity = 0;
 //        Product product = this.getProduct();
         //Set ID
         printHeading(" \n Creating new Opporunity with  ID: "+ this.getId());
@@ -84,8 +87,12 @@ public class Opportunity {
         }
 
         //Set quantity
+        //Opcion con header
         this.setQuantity(QuantityOptions("\n Numbers of products being considered for this opportunity? \n",
                 "quantity"));
+        //Como en navigation
+        quantity=readInt(" Numbers of products being considered for this opportunity", Integer.MAX_VALUE);
+        this.setQuantity(quantity);
 
         //Tiene que agarrar el LEAD al que se le aplicó el metodo de generar oportunidad
         this.setDecisionMaker(leadContact);
@@ -110,21 +117,26 @@ public class Opportunity {
     private void printProductMenu(){
             clearConsole();
             printHeading(" \n Choose a product for this opportunity? \n ");
-            printSeparator(20);
+            Utils.printSeparator(20);
             System.out.println("(1) HYBRID");
             System.out.println("(2) FLATBED");
             System.out.println("(3) BOX");
         }
 
+
+   //Opcion con header y atribute y que dentro lea el int
     private static int QuantityOptions(String header, String product) {
         clearConsole();
-        //printHeading();
+        printHeading("Please enter how many product assing to this opportunity");
         boolean quantitySet = false;
         int quantity = 0;
         //TODO Pregunta si está bien pero no le chequea que sea un init positivo. Ver si lo hago con algo del Utils
         do {
             printHeading(header);
-            //quantity = scanner.next(); //TODO ver si lo ponemos en utils o definirlo aca
+            //TODO Entender este.. pero lo que debo hacer es leer un numero entero que escribe Sara
+            //TODO y comprobar que sea entero positivo
+           // quantity = promptIntWithValidation(scanner.next());
+            quantity = Integer.parseInt(scanner.next());
             //asking the player if he wants to correct his choice
             clearConsole();
             printHeading(quantity + product + "is enough for this Opportunity?");

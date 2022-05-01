@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Utils {
-    static Scanner scanner = new Scanner(System.in);
+    public static Scanner scanner = new Scanner(System.in);
     static String title = "CRM Program";
 
     private List<Lead> leads = new ArrayList<>();
