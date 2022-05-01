@@ -5,7 +5,8 @@ public class Lead {
     private String phoneNumber;
     private String email;
     private String companyName;
-    private int counterID;
+    private int leadId;
+    private int counterId = 0;
 
     //All Fields must be supplied to create the New Lead:
     public Lead(String name, String phoneNumber, String email, String companyName) {
@@ -13,7 +14,7 @@ public class Lead {
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.companyName = companyName;
-        setCounterID(counterID);
+        setLeadId(++counterId);
     }
 
     public Lead() {
@@ -53,14 +54,12 @@ public class Lead {
         this.companyName = companyName;
     }
 
-    public int getCounterID() {
-        return counterID;
+    public int getLeadIdID() {
+        return leadId;
     }
 
-    //TODO: system should automatically create an Id for the Lead (counter)
-    public void setCounterID(int counterID) {
-        counterID = 0;
-        this.counterID = counterID;
+    public void setLeadId(int leadId) {
+        this.leadId = leadId;
     }
 
     @Override

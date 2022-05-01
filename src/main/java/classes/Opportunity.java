@@ -2,6 +2,7 @@ package classes;
 
 import enums.Product;
 import enums.Status;
+import lombok.NoArgsConstructor;
 import utils.Utils;
 
 import java.util.UUID;
@@ -76,7 +77,7 @@ public class Opportunity {
         int quantity = 0;
 //        Product product = this.getProduct();
         //Set ID
-        printHeading(" \n Creating new Opporunity with  ID: "+ this.getId());
+        printHeading(" \n Creating new Opportunity with  ID: "+ this.getId());
 
         //Set product
         printProductMenu();
