@@ -1,5 +1,8 @@
 package classes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Lead {
     private String name;
     private String phoneNumber;
@@ -8,6 +11,8 @@ public class Lead {
     private int leadId;
     private int counterId = 0;
 
+    List<Lead> leadList = new ArrayList<>();
+
     //All Fields must be supplied to create the New Lead:
     public Lead(String name, String phoneNumber, String email, String companyName) {
         this.name = name;
@@ -15,6 +20,14 @@ public class Lead {
         this.email = email;
         this.companyName = companyName;
         setLeadId(++counterId);
+    }
+    public Lead(String name, String phoneNumber, String email, String companyName, int leadId) {
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.companyName = companyName;
+        setLeadId(++counterId);
+        this.leadList= leadList;
     }
 
     public Lead() {
@@ -54,12 +67,16 @@ public class Lead {
         this.companyName = companyName;
     }
 
-    public int getLeadIdID() {
+    public int getLeadId() {
         return leadId;
     }
 
     public void setLeadId(int leadId) {
         this.leadId = leadId;
+    }
+
+    public List getLeadList(){
+        return leadList;
     }
 
     @Override
@@ -69,7 +86,7 @@ public class Lead {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
                 ", companyName='" + companyName + '\'' +
-                ", counterID=" + counterID +
+                ", counterId=" + counterId +
                 '}';
     }
 }
