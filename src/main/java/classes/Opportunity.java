@@ -2,9 +2,13 @@ package classes;
 
 import enums.Product;
 import enums.Status;
+import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
+import static utils.Utils.*;
+
+@NoArgsConstructor
 public class Opportunity {
     private String id;
     private Product product;
@@ -114,13 +118,13 @@ public class Opportunity {
 
     private static int QuantityOptions(String header, String product) {
         clearConsole();
-        printHeading();
+        //printHeading();
         boolean quantitySet = false;
         int quantity = 0;
 
         do {
             printHeading(header);
-            quantity = scanner.next(); //TODO ver si lo ponemos en utils o definirlo aca
+            //quantity = scanner.next(); //TODO ver si lo ponemos en utils o definirlo aca
             //asking the player if he wants to correct his choice
             clearConsole();
             printHeading(quantity + product + "is enough for this Opportunity?");

@@ -10,6 +10,9 @@ import java.util.stream.Collectors;
 
 public class Validator {
 
+    //TODO isanEmail
+
+
     public static boolean applyValidation(Validation validation, String input) {
         boolean isValid = false;
 
@@ -24,7 +27,7 @@ public class Validator {
 
         Set<String> countries = new HashSet<>(Arrays.stream(COUNTRIES_ARR).map(String::toLowerCase).collect(Collectors.toList()));
 
-        if (countries.contains(input.toLowerCase(Locale.ROOT))) {
+        if (countries.contains(input.toLowerCase())) {
             return true;
         } else {
             Utils.printLikeError("Input a valid country");

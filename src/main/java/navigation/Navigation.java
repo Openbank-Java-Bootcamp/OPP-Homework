@@ -28,7 +28,7 @@ public class Navigation {
 
         industry = selectIndustry(industry);
 
-        int employeeCount = readInt("Number of employees", Integer.MAX_VALUE);
+        int employeeCount = Input.promptIntWithCheck("Number of employees", "Are you sure it's correct?",  Integer.MAX_VALUE);
 
         String city = readString("City of Account");
 
