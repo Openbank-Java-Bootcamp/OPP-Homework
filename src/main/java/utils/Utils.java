@@ -39,7 +39,10 @@ public class Utils {
         return input;
     }
 
+    //todo are you sure its okay
+
     /////////////////////////////////// Method to catch errors from user int input /////////////////////////////////////
+
 
     public static String readString(String prompt) {
         String input = null;
