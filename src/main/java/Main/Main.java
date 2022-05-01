@@ -4,6 +4,7 @@ package Main;
 import classes.Contact;
 import classes.Opportunity;
 
+import static classes.Opportunity.createOpportunity;
 import static navigation.Navigation.createAccount;
 
 public class Main {
@@ -11,10 +12,8 @@ public class Main {
 
         //Test Account
         Contact newContact = new Contact("Mike");
-        Opportunity newOpportunity = new Opportunity();
 
-        createAccount(newContact, newOpportunity);
-
-
+        //CRea la oportunity primero y depsues la account
+        createAccount(newContact,  createOpportunity(newContact));
     }
 }

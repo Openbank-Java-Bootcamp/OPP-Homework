@@ -9,6 +9,7 @@ import utils.Input;
 
 import java.util.List;
 
+import static utils.Input.promptIntWithCheck;
 import static utils.Utils.*;
 
 public class Navigation {
@@ -28,7 +29,8 @@ public class Navigation {
 
         industry = selectIndustry(industry);
 
-        int employeeCount = Input.promptIntWithCheck("Number of employees", "Are you sure it's correct?",  Integer.MAX_VALUE);
+        //int employeeCount = Input.promptIntWithCheck("Number of employees", "Are you sure it's correct?",  Integer.MAX_VALUE);
+        int employeeCount = promptIntWithCheck("Number of employees",  Integer.MAX_VALUE);
 
         String city = readString("City of Account");
 

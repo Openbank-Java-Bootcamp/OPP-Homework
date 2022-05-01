@@ -2,19 +2,25 @@ package classes;
 
 import enums.Product;
 import enums.Status;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import utils.Utils;
 
 import java.util.UUID;
 
+import static utils.Input.promptIntWithCheck;
 import static utils.Utils.*;
 
-@NoArgsConstructor
+
 import static utils.Input.promptIntWithValidation;
 import static utils.Utils.printHeading;
 import static utils.Utils.readInt;
 import static utils.Utils.*;
-
+@Getter
+@Setter
+@NoArgsConstructor
 public class Opportunity {
     private String id;
     private Product product;
@@ -27,7 +33,7 @@ public class Opportunity {
         this.id = UUID.randomUUID().toString();
         this.product = product;
         this.quantity = quantity;
-        this.decisionMaker = decisionMaker ;
+        this.decisionMaker = contact ;
         this.status = status;
     }
 
@@ -73,35 +79,36 @@ public class Opportunity {
     }
 
     ///////////////////////////////////////////////////////New Opportunity///////////////////////////////////////
-    public void newOpportunity(Contact leadContact){
-        int quantity = 0;
-//        Product product = this.getProduct();
+    public static Opportunity createOpportunity(Contact leadContact){
         //Set ID
-        printHeading(" \n Creating new Opportunity with  ID: "+ this.getId());
+        String id= UUID.randomUUID().toString();
 
         //Set product
         printProductMenu();
+        Product product=null;
         int input = readInt("-> ", 3);
         if (input == 1) {
-            this.setProduct(Product.HYBRID);
+            //this.setProduct(Product.HYBRID);
+            product = Product.HYBRID;
         } else if (input == 2) {
-            this.setProduct(Product.FLATBED);
+            product = Product.FLATBED;
         }else if (input == 3) {
-            this.setProduct(Product.BOX);
+            product = Product.BOX;
         }
 
         //Set quantity
-        //Opcion con header
-        this.setQuantity(QuantityOptions("\n Numbers of products being considered for this opportunity? \n",
-                "quantity"));
-        //Como en navigation
-        quantity=readInt(" Numbers of products being considered for this opportunity", Integer.MAX_VALUE);
-        this.setQuantity(quantity);
+        int quantity = promptIntWithCheck("Number of products for this Opportunity",  Integer.MAX_VALUE);
+
 
         //Tiene que agarrar el LEAD al que se le aplicó el metodo de generar oportunidad
-        this.setDecisionMaker(leadContact);
+        Contact lead = leadContact;
 
-        this.setStatus(Status.OPEN);
+        //Set status
+        Status status = Status.OPEN;
+
+        Opportunity newOpportunity = new Opportunity(id, product, quantity, lead, status );
+        printHeading(" \n Creating new Opportunity with  ID: "+ newOpportunity.getId());
+        return newOpportunity;
     }
 
     ///////////////////////////////////////////////////////Change Opportunity Status///////////////////////////////////////
@@ -118,7 +125,7 @@ public class Opportunity {
     }
 
     ///////////////////////////////////////////////////////Menus///////////////////////////////////////
-    private void printProductMenu(){
+    private static void printProductMenu(){
             clearConsole();
             printHeading(" \n Choose a product for this opportunity? \n ");
             Utils.printSeparator(20);
@@ -129,7 +136,7 @@ public class Opportunity {
 
 
    //Opcion con header y atribute y que dentro lea el int
-    private static int QuantityOptions(String header, String product) {
+  /*  private static int QuantityOptions(String header, String product) {
         clearConsole();
         printHeading("Please enter how many product assing to this opportunity");
         boolean quantitySet = false;
@@ -153,7 +160,7 @@ public class Opportunity {
         } while (!quantitySet);
 
         return quantity;
-    }
+    }*/
 
     private void printStatusMenu(){
         clearConsole();
