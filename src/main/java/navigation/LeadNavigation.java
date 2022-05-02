@@ -3,15 +3,10 @@ package navigation;
 
 import classes.Lead;
 
-import enums.Validation;
-import utils.Input;
-
-import java.util.List;
-
 import static utils.Utils.*;
 import static utils.Utils.readString;
 
-public class NewLeadNavigation {
+public class LeadNavigation {
     static Lead newLead;
 
     public static void createNewLead(Lead lead) {
