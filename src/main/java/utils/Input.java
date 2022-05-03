@@ -10,7 +10,7 @@ import static utils.Utils.readInt;
 
 
 public class Input {
-    static Scanner scanner = new Scanner(System.in);
+    public static Scanner scanner = new Scanner(System.in);
 
 
     /**

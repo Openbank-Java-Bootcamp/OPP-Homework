@@ -175,4 +175,26 @@ public class Opportunity {
         return "Opportunity, id : %s, product: %s, quantity : %s, decisionMaker: %, status: %" +
                 " \n==============\n".formatted(id, product, quantity, decisionMaker, status);
     }
+
+
+    public static void closeLostOpportunity(String closeLost){
+        if(closeLost.toLowerCase() == "close-lost" ){ //is "close lost" best? (no -)
+
+            System.out.println("showing leads...");
+        }else{
+            utils.Utils.printLikeError( closeLost + " command not found");
+            //throw new IllegalArgumentException( lookUpLeadID + " command not found"); //"No command line " + "arguments found."
+        }
+    }
+
+
+    public static void closeWonOpportunity(String closeWon){
+        if(closeWon.toLowerCase() == "close-won" ){
+
+            System.out.println("showing leads...");
+        }else{
+            utils.Utils.printLikeError( closeWon + " command not found");
+            //throw new IllegalArgumentException( lookUpLeadID + " command not found"); //"No command line " + "arguments found."
+        }
+    }
 }

@@ -14,10 +14,10 @@ import java.util.UUID;
 public class Contact extends Lead {
     private String id;
 
-    public Contact(String name, String phoneNumber, String email, String companyName) {
+   /* public Contact(String name, String phoneNumber, String email, String companyName) {
         super(name, phoneNumber, email, companyName);
         this.id = UUID.randomUUID().toString();
-    }
+    }*/
 
     @Override
     public String toString() {
