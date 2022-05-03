@@ -21,14 +21,16 @@ public class Lead {
         this.companyName = companyName;
         setLeadId(++counterId);
     }
-    public Lead(String name, String phoneNumber, String email, String companyName, int leadId) {
-        this.name = name;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.companyName = companyName;
-        setLeadId(++counterId);
-        this.leadList= leadList;
-    }
+
+    //TODO: Meter el leadID cuando escriban el comando "Show Leads".
+//    public Lead(String name, String phoneNumber, String email, String companyName, int leadId) {
+//        this.name = name;
+//        this.phoneNumber = phoneNumber;
+//        this.email = email;
+//        this.companyName = companyName;
+//        setLeadId(++counterId);
+//        this.leadList= leadList;
+//    }
 
     public Lead() {
 

@@ -21,13 +21,13 @@ public class LeadNavigation {
 
         String newLeadEmail = readString("Insert the email");
 
-        String companyName= readString("Insert the email");
+        String companyName= readString("Insert the Company name");
 
 
         Lead newLead;
         newLead = new Lead(newLeadName, newLeadPhoneNumber, newLeadEmail, companyName);
         newLead.getLeadList().add(lead);
 
-        System.out.println(newLead);
+        System.out.println(newLead.toString());
     }
 }
