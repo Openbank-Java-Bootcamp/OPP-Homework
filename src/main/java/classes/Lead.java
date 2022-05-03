@@ -9,28 +9,17 @@ public class Lead {
     private String email;
     private String companyName;
     private int leadId;
-    private int counterId = 0;
 
-    List<Lead> leadList = new ArrayList<>();
 
     //All Fields must be supplied to create the New Lead:
-    public Lead(String name, String phoneNumber, String email, String companyName) {
+    public Lead(String name, String phoneNumber, String email, String companyName, int leadId) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.companyName = companyName;
-        setLeadId(++counterId);
+        this.leadId = leadId;
     }
 
-    //TODO: Meter el leadID cuando escriban el comando "Show Leads".
-//    public Lead(String name, String phoneNumber, String email, String companyName, int leadId) {
-//        this.name = name;
-//        this.phoneNumber = phoneNumber;
-//        this.email = email;
-//        this.companyName = companyName;
-//        setLeadId(++counterId);
-//        this.leadList= leadList;
-//    }
 
     public Lead() {
 
@@ -77,9 +66,6 @@ public class Lead {
         this.leadId = leadId;
     }
 
-    public List getLeadList(){
-        return leadList;
-    }
 
     @Override
     public String toString() {
