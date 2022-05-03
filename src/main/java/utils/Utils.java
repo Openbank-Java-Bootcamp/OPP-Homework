@@ -9,7 +9,6 @@ import java.util.Scanner;
 public class Utils {
     public static Scanner scanner = new Scanner(System.in);
     static String title = "CRM Program";
-
     private List<Lead> leads = new ArrayList<>();
 
     public static void printLikeError(String message) {
@@ -30,7 +29,7 @@ public class Utils {
         do {
             System.out.println(prompt);
             try {
-                input = Integer.parseInt(scanner.next());
+                input = Integer.parseInt(scanner.nextLine());
             } catch (Exception e) {
                 input = -1;
                 System.out.println("Please enter a valid number!");
@@ -39,7 +38,6 @@ public class Utils {
         return input;
     }
 
-    //todo are you sure its okay
 
     /////////////////////////////////// Method to catch errors from user int input /////////////////////////////////////
 
@@ -50,7 +48,7 @@ public class Utils {
         do {
             System.out.println(prompt);
             try {
-                input = scanner.next();
+                input = scanner.nextLine();
             } catch (Exception e) {
                 System.out.println("Please enter a valid integer!");
             }

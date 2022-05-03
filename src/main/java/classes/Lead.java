@@ -1,20 +1,25 @@
 package classes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Lead {
     private String name;
     private String phoneNumber;
     private String email;
     private String companyName;
-    private int counterID;
+    private int leadId;
+
 
     //All Fields must be supplied to create the New Lead:
-    public Lead(String name, String phoneNumber, String email, String companyName) {
+    public Lead(String name, String phoneNumber, String email, String companyName, int leadId) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.companyName = companyName;
-        setCounterID(counterID);
+        this.leadId = leadId;
     }
+
 
     public Lead() {
 
@@ -53,15 +58,14 @@ public class Lead {
         this.companyName = companyName;
     }
 
-    public int getCounterID() {
-        return counterID;
+    public int getLeadId() {
+        return leadId;
     }
 
-    //TODO: system should automatically create an Id for the Lead (counter)
-    public void setCounterID(int counterID) {
-        counterID = 0;
-        this.counterID = counterID;
+    public void setLeadId(int leadId) {
+        this.leadId = leadId;
     }
+
 
     @Override
     public String toString() {
@@ -70,7 +74,9 @@ public class Lead {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
                 ", companyName='" + companyName + '\'' +
-                ", counterID=" + counterID +
+                ", counterId=" + counterId +
                 '}';
     }
+
+
 }

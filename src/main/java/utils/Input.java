@@ -63,41 +63,26 @@ public class Input {
     }
 
 
-    //Todo
-    public static int promptIntWithCheck(String prompt, String question, int userChoices) {
-        int input = 0;
-        boolean isValid = false;
-        boolean isInputCorrect = false;
 
-        while (!isValid) {
-            System.out.println(prompt);
+    public static int promptIntWithCheck( String prompt, int userChoices) {
+        //va en header lo que ve el jugador y attribute
+        boolean attributeSet = false;
+        int whatWeAreSetting;
 
-            try {
-                input = Integer.parseInt(scanner.nextLine());
+        do {
+            whatWeAreSetting = promptIntWithValidation(prompt, userChoices);
 
-                do {
-                    printHeading(question);
-                    System.out.println("(1) Yes!");
-                    System.out.println("(2) No, I want to correct it");
-                    int answerInput = readInt("-> ", 2);
-                    if (answerInput == 1) {
-                        isInputCorrect = true;
-                        isValid = false;
-                    }
-                } while (!isInputCorrect);
-
-            } catch (Exception e) {
-                Utils.printLikeError("Please enter a number");
-                continue;
+            //asking the player if he wants to correct his choice
+            printHeading( "You have choose ->" + whatWeAreSetting + ".\n\tIs that correct?");
+            System.out.println("(1) Yes!");
+            System.out.println("(2) No, I want to correct it");
+            int input = readInt("-> ", 2);
+            if (input == 1) {
+                attributeSet = true;
             }
 
-            isValid = input > 0 && input <= userChoices;
-
-            if (!isValid) Utils.printLikeError("Input a valid choice");
-            if (!isInputCorrect) Utils.printLikeError("Input 1 or 2");
-        }
-
-
-        return input;
+        } while (!attributeSet);
+        return whatWeAreSetting;
     }
 }
+
