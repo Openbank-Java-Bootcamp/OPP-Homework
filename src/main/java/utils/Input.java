@@ -10,7 +10,7 @@ import static utils.Utils.readInt;
 
 
 public class Input {
-    static Scanner scanner = new Scanner(System.in);
+    public static Scanner scanner = new Scanner(System.in);
 
 
     /**
@@ -67,21 +67,21 @@ public class Input {
     public static int promptIntWithCheck( String prompt, int userChoices) {
         //va en header lo que ve el jugador y attribute
         boolean attributeSet = false;
-        int whatWeAreSetting;
+        int whatWeAreSetting = 0;
 
-        do {
+        while (!attributeSet){
             whatWeAreSetting = promptIntWithValidation(prompt, userChoices);
 
             //asking the player if he wants to correct his choice
-            printHeading( "You have choose ->" + whatWeAreSetting + ".\n\tIs that correct?");
+            printHeading( "You have chosen ->" + whatWeAreSetting + ".\n\tIs that correct?");
             System.out.println("(1) Yes!");
             System.out.println("(2) No, I want to correct it");
-            int input = readInt("-> ", 2);
+            int input = promptIntWithValidation("-> ", 2);
             if (input == 1) {
                 attributeSet = true;
             }
 
-        } while (!attributeSet);
+        } 
         return whatWeAreSetting;
     }
 }

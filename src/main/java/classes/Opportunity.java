@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import utils.Input;
 import utils.Utils;
 
 import java.util.UUID;
@@ -54,8 +55,9 @@ public class Opportunity {
         //Set product
         printProductMenu();
         Product product=null;
-        int input = readInt("-> ", 3);
+        int input = Input.promptIntWithValidation("-> ", 3);
         if (input == 1) {
+            //this.setProduct(Product.HYBRID);
             product = Product.HYBRID;
         } else if (input == 2) {
             product = Product.FLATBED;
@@ -73,11 +75,25 @@ public class Opportunity {
         Status status = Status.OPEN;
 
         Opportunity newOpportunity = new Opportunity(id, product, quantity, lead, status );
-        printHeading(" \n Creating new Opportunity with  ID: "+ newOpportunity.getId());
+        printHeading(" \n Creating new Opportunity with  ID: "+ newOpportunity.toString());
         return newOpportunity;
     }
 
     ///////////////////////////////////////////////////////Change Opportunity Status///////////////////////////////////////
+  /*  public static void changeStatus(){
+        //todo id input, then find Opportunity
+
+        printStatusMenu();
+        int input = Input.promptIntWithValidation("-> ", 3);
+        if (input == 1) {
+            opportunity.setStatus(status.OPEN);
+        } else if (input == 2) {
+            opportunity.setStatus(status.CLOSED_WON);
+        }else if (input == 3) {
+            opportunity.setStatus(status.CLOSED_LOST);
+        }
+    }*/
+
     private void changeStatus(){
         printStatusMenu();
         int input = readInt("-> ", 3);
@@ -91,7 +107,7 @@ public class Opportunity {
     }
 
     ///////////////////////////////////////////////////////Menus///////////////////////////////////////
-    private static void printProductMenu(){
+    public static void printProductMenu(){
             clearConsole();
             printHeading(" \n Choose a product for this opportunity? \n ");
             Utils.printSeparator(20);
@@ -100,7 +116,7 @@ public class Opportunity {
             System.out.println("(3) BOX");
         }
 
-    private void printStatusMenu(){
+    public static void printStatusMenu(){
         clearConsole();
         printHeading(" \n Choose the status for this opportunity? \n ");
         printSeparator(20);
@@ -110,7 +126,29 @@ public class Opportunity {
     }
 
     @Override    public String toString() {
-        return "Opportunity, id : %s, product: %s, quantity : %s, decisionMaker: %, status: %" +
+        return "Opportunity, id : %s, product: %s, quantity : %s, decisionMaker: %s, status: %s" +
                 " \n==============\n".formatted(id, product, quantity, decisionMaker, status);
+    }
+
+
+    public static void closeLostOpportunity(String closeLost){
+        if(closeLost.toLowerCase() == "close-lost" ){ //is "close lost" best? (no -)
+
+            System.out.println("showing leads...");
+        }else{
+            utils.Utils.printLikeError( closeLost + " command not found");
+            //throw new IllegalArgumentException( lookUpLeadID + " command not found"); //"No command line " + "arguments found."
+        }
+    }
+
+
+    public static void closeWonOpportunity(String closeWon){
+        if(closeWon.toLowerCase() == "close-won" ){
+
+            System.out.println("showing leads...");
+        }else{
+            utils.Utils.printLikeError( closeWon + " command not found");
+            //throw new IllegalArgumentException( lookUpLeadID + " command not found"); //"No command line " + "arguments found."
+        }
     }
 }

@@ -50,7 +50,7 @@ public class Utils {
             try {
                 input = scanner.nextLine();
             } catch (Exception e) {
-                System.out.println("Please enter a valid integer!");
+                System.out.println("Please enter a valid word!");
             }
         } while (scanner.hasNextDouble() || scanner.hasNextInt() || scanner.hasNextFloat() || scanner.hasNextByte() ||
                 scanner.hasNextLong() || scanner.hasNextBoolean());
