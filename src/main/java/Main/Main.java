@@ -2,6 +2,11 @@ package Main;
 
 
 import navigation.LeadNavigation;
+import navigation.OpportunityNavigation;
+
+import static navigation.LeadNavigation.convertLead;
+import static navigation.LeadNavigation.createNewLead;
+import static navigation.OpportunityNavigation.changeStatus;
 
 
 public class Main {
@@ -20,6 +25,13 @@ public class Main {
 //       LeadNavigation.lookUpLeadID();
 //
 //        LeadNavigation.convertLead();
+
+        createNewLead();
+
+        createNewLead();
+        convertLead();
+
+        changeStatus();
 
     }
 }

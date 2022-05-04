@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Validator {
@@ -18,10 +20,15 @@ public class Validator {
 
         switch (validation) {
             case COUNTRY -> isValid = isValidCountryName(input);
+            case NAME -> isValid = isValidName(input);
+            case EMAIL -> isValid = isValidEmail(input);
+            //PHONE
         }
 
         return isValid;
     }
+
+    //////////////////////////////////////////////////////// Country //////////////////////////////////////////////////
 
     public static Boolean isValidCountryName(String input) {
 
@@ -36,7 +43,33 @@ public class Validator {
 
     }
 
+    //////////////////////////////////////////////////////// Name ////////////////////////////////////////////////////
+    public static Boolean isValidName(String name) {
+        Pattern pattern = Pattern.compile("^[a-zA-ZÀ-ÿ\\u00f1\\u00d1]+\\s[a-zA-ZÀ-ÿ\\u00f1\\u00d1]+$");
+        Matcher matcher = pattern.matcher(name);
 
+        if (matcher.matches()) {
+            return true;
+        } else {
+            Utils.printLikeError("Name format must be Name Surname");
+            return false;
+        }
+    }
+
+    //////////////////////////////////////////////////////// Email ////////////////////////////////////////////////////
+    public static Boolean isValidEmail(String email) {
+        Pattern pattern = Pattern.compile("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
+        + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$");
+        //Pattern pattern = Pattern.compile("^(.+)@(\\S+)$");
+        Matcher matcher = pattern.matcher(email);
+
+        if (matcher.matches()) {
+            return true;
+        } else {
+            Utils.printLikeError("Email address invalid");
+            return false;
+        }
+    }
 
 
     public static final String[] COUNTRIES_ARR = new String[]{"Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra", "Angola",
@@ -75,4 +108,7 @@ public class Validator {
             "United States", "United States Minor Outlying Islands", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam",
             "Virgin Islands (British)", "Virgin Islands (U.S.)", "Wallis and Futuna Islands", "Western Sahara", "Yemen",
             "Yugoslavia", "Zambia", "Zimbabwe", "Palestine"};
+
+
+
 }

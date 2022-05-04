@@ -1,5 +1,5 @@
 package enums;
 
 public enum Validation {
-    COUNTRY, EMAIL
+    COUNTRY, EMAIL, NAME,  PHONE,
 }
