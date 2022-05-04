@@ -73,20 +73,22 @@ public class Opportunity {
     }
 
     ///////////////////////////////////////////////////////Change Opportunity Status///////////////////////////////////////
-    private void changeStatus(){
+    public static void changeStatus(){
+        //todo id input, then find Opportunity
+
         printStatusMenu();
         int input = Input.promptIntWithValidation("-> ", 3);
         if (input == 1) {
-            this.setStatus(status.OPEN);
+            opportunity.setStatus(status.OPEN);
         } else if (input == 2) {
-            this.setStatus(status.CLOSED_WON);
+            opportunity.setStatus(status.CLOSED_WON);
         }else if (input == 3) {
-            this.setStatus(status.CLOSED_LOST);
+            opportunity.setStatus(status.CLOSED_LOST);
         }
     }
 
     ///////////////////////////////////////////////////////Menus///////////////////////////////////////
-    private static void printProductMenu(){
+    public static void printProductMenu(){
             clearConsole();
             printHeading(" \n Choose a product for this opportunity? \n ");
             Utils.printSeparator(20);
@@ -95,35 +97,7 @@ public class Opportunity {
             System.out.println("(3) BOX");
         }
 
-
-   //Opcion con header y atribute y que dentro lea el int
-  /*  private static int QuantityOptions(String header, String product) {
-        clearConsole();
-        printHeading("Please enter how many product assing to this opportunity");
-        boolean quantitySet = false;
-        int quantity = 0;
-        //TODO Pregunta si está bien pero no le chequea que sea un init positivo. Ver si lo hago con algo del Utils
-        do {
-            printHeading(header);
-            //TODO Entender este.. pero lo que debo hacer es leer un numero entero que escribe Sara
-            //TODO y comprobar que sea entero positivo
-           // quantity = promptIntWithValidation(scanner.next());
-            quantity = Integer.parseInt(scanner.next());
-            //asking the player if he wants to correct his choice
-            clearConsole();
-            printHeading(quantity + product + "is enough for this Opportunity?");
-            System.out.println("(1) Yes!");
-            System.out.println("(2) No, I want to correct it");
-            int input = readInt("-> ", 2);
-            if (input == 1) {
-                quantitySet = true;
-            }
-        } while (!quantitySet);
-
-        return quantity;
-    }*/
-
-    private void printStatusMenu(){
+    public static void printStatusMenu(){
         clearConsole();
         printHeading(" \n Choose the status for this opportunity? \n ");
         printSeparator(20);

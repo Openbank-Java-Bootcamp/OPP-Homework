@@ -1,6 +1,8 @@
 package navigation;
 
 import static utils.Utils.*;
+
+import classes.Opportunity;
 import enums.NavigationEnum;
 
 public class Navigation {
@@ -10,10 +12,11 @@ public class Navigation {
         commandMenu();
 
 //        Enum selected = selectNavigation();
-//
+
 //        switch (selected) {
 //            case NavigationEnum.NEW_LEAD -> LeadNavigation.createNewLead();
 //            case NavigationEnum.SHOW_LEADS -> LeadNavigation.showLeads();
+//            case NavigationEnum.CHANGE_STATUS -> Opportunity.changeStatus();
 //        }
 
     }
@@ -41,8 +44,7 @@ public class Navigation {
             case "show loads" -> selected = NavigationEnum.SHOW_LEADS;
             case "lookup lead" -> selected = NavigationEnum.LOOKUP_LEAD;
             case "convert lead" -> selected = NavigationEnum.CONVERT_LEAD;
-            case "close-lost" -> selected = NavigationEnum.CLOSE_LOST;
-            case "close-won" -> selected = NavigationEnum.CLOSE_WON;
+            case "change status" -> selected = NavigationEnum.CHANGE_STATUS;
             case "exit" -> selected = NavigationEnum.EXIT;
         }
         return selected;
