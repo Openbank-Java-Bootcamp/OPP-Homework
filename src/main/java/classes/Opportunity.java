@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import utils.Input;
 import utils.Utils;
 
 import java.util.UUID;
@@ -37,46 +38,6 @@ public class Opportunity {
         this.status = status;
     }
 
-    ///////////////////////////////////////////////////////////Getters ///////////////////////////////////////
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public Contact getDecisionMaker() {
-        return decisionMaker;
-    }
-
-    public void setDecisionMaker(Contact decisionMaker) {
-        this.decisionMaker = decisionMaker;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
 
     ///////////////////////////////////////////////////////New Opportunity///////////////////////////////////////
     public static Opportunity createOpportunity(Contact leadContact){
@@ -86,7 +47,7 @@ public class Opportunity {
         //Set product
         printProductMenu();
         Product product=null;
-        int input = readInt("-> ", 3);
+        int input = Input.promptIntWithValidation("-> ", 3);
         if (input == 1) {
             //this.setProduct(Product.HYBRID);
             product = Product.HYBRID;
@@ -107,14 +68,14 @@ public class Opportunity {
         Status status = Status.OPEN;
 
         Opportunity newOpportunity = new Opportunity(id, product, quantity, lead, status );
-        printHeading(" \n Creating new Opportunity with  ID: "+ newOpportunity.getId());
+        printHeading(" \n Creating new Opportunity with  ID: "+ newOpportunity.toString());
         return newOpportunity;
     }
 
     ///////////////////////////////////////////////////////Change Opportunity Status///////////////////////////////////////
     private void changeStatus(){
         printStatusMenu();
-        int input = readInt("-> ", 3);
+        int input = Input.promptIntWithValidation("-> ", 3);
         if (input == 1) {
             this.setStatus(status.OPEN);
         } else if (input == 2) {
@@ -172,7 +133,7 @@ public class Opportunity {
     }
 
     @Override    public String toString() {
-        return "Opportunity, id : %s, product: %s, quantity : %s, decisionMaker: %, status: %" +
+        return "Opportunity, id : %s, product: %s, quantity : %s, decisionMaker: %s, status: %s" +
                 " \n==============\n".formatted(id, product, quantity, decisionMaker, status);
     }
 

@@ -7,13 +7,16 @@ import enums.Industry;
 import enums.Validation;
 import utils.Input;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static utils.Input.promptIntWithCheck;
 import static utils.Utils.*;
 import static utils.Utils.readString;
 
 public class AccountNavigation {
+    static Map<String, Account> contactMap = new HashMap<>();
 
     /**
      * @param contact
@@ -26,7 +29,7 @@ public class AccountNavigation {
         printHeading("Please input the following Account information");
         printSeparator(30);
 
-        industry = selectIndustry(industry);
+        industry = selectIndustry();
 
         int employeeCount = promptIntWithCheck("Number of employees",  Integer.MAX_VALUE);
 
@@ -39,12 +42,12 @@ public class AccountNavigation {
         newAccount.getContactList().add(contact);
         newAccount.getOpportunityList().add(opportunity);
 
-        System.out.println(newAccount.toString());
+        System.out.println("Succesfully created" + newAccount);
     }
 
-    private static Industry selectIndustry(Industry industry) {
+    private static Industry selectIndustry() {
         String typesAccountMenu = "\n (1) Produce \n (2) Ecommerce \n (3) Manufacturing \n (4) Medical \n (5) Other";
-
+        Industry industry = null;
         int input = Input.promptIntWithValidation("Select type of industry" + typesAccountMenu, 5);
 
         switch (input) {
@@ -55,5 +58,7 @@ public class AccountNavigation {
             case 5 -> industry = Industry.OTHER;
         }
         return industry;
+
+
     }
 }

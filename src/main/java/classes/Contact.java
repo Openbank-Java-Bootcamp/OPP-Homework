@@ -14,14 +14,19 @@ import java.util.UUID;
 public class Contact extends Lead {
     private String id;
 
-   /* public Contact(String name, String phoneNumber, String email, String companyName) {
-        super(name, phoneNumber, email, companyName);
+    public Contact(String name, Long phoneNumber, String email, String companyName, int leadId) {
+        super(name, phoneNumber, email, companyName, leadId);
         this.id = UUID.randomUUID().toString();
-    }*/
+    }
+
+    public Contact(Lead lead) {
+        super(lead.getName(), lead.getPhoneNumber(), lead.getEmail(), lead.getCompanyName());
+        this.id = UUID.randomUUID().toString();
+    }
 
     @Override
     public String toString() {
         return "Contact id %s, name %s, phone number %s, email %s, company name %s".formatted(id,
-                 getName(), getPhoneNumber(), getEmail(),getCompanyName());
+                getName(), getPhoneNumber(), getEmail(), getCompanyName());
     }
 }
