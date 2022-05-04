@@ -4,6 +4,7 @@ package navigation;
 import classes.Contact;
 import classes.Lead;
 import classes.Opportunity;
+import enums.Validation;
 import utils.Input;
 import utils.Utils;
 
@@ -12,6 +13,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static navigation.OpportunityNavigation.createOpportunity;
+import static utils.Input.promptTextWithValidation;
 import static utils.Utils.*;
 import static utils.Utils.readString;
 
@@ -34,12 +37,17 @@ public class LeadNavigation {
         printHeading("Please input the following New Lead information");
         printSeparator(30);
 
-        String newLeadName = readString("Insert the Lead name");
+        //String newLeadName = readString("Insert the Lead name");
+        String newLeadName = promptTextWithValidation("Insert the Lead name", List.of(Validation.NAME));
+        System.out.println("YA TA NAME");
+
 
         //todo Faltaría el Prompt int with Validation - phone number
-        Long newLeadPhoneNumber = Long.valueOf(Input.promptIntWithValidation("Insert the Phone number", Integer.MAX_VALUE));
+        //Long newLeadPhoneNumber = Long.valueOf(Input.promptIntWithValidation("Insert the Phone number", Integer.MAX_VALUE));
+        Long newLeadPhoneNumber= Long.valueOf(123);
 
-        String newLeadEmail = readString("Insert the email");
+        String newLeadEmail = promptTextWithValidation("Insert the email address", List.of(Validation.EMAIL));
+        System.out.println("YA TA EMAIL");
 
         String companyName= readString("Insert the Company name");
 
@@ -75,7 +83,7 @@ public class LeadNavigation {
     }
 
     public static void convertLead(){
-
+        clearConsole();
         int input = Input.promptIntWithCheck("Input the ID of the Lead you want to convert", leadList.size());
 
         Lead foundLead = leadList.get(input-1);
@@ -84,11 +92,9 @@ public class LeadNavigation {
 
         contactList.add(currentContact);
 
-        currentOpportunity = Opportunity.createOpportunity(currentContact);
+        currentOpportunity = createOpportunity(currentContact);
 
         AccountNavigation.createAccount(currentContact, currentOpportunity);
-
-
 
     }
 

@@ -2,7 +2,7 @@ package classes;
 
 import org.junit.jupiter.api.BeforeAll;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class OpportunityTest {
     private Lead lead;
@@ -14,8 +14,8 @@ class OpportunityTest {
         Opportunity opportunity = new Opportunity();
     }
 
-    @org.junit.jupiter.api.Test
-    void createOpportunity() {
-        assertEquals(opportunity, lead.createOpportunity());
-    }
+   /* @org.junit.jupiter.api.Test
+    void createOpportunity(Lead lead) {
+        assertEquals(opportunity, createOpportunity(this.lead));
+    }*/
 }
