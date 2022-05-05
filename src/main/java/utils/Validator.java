@@ -4,7 +4,6 @@ import enums.Validation;
 
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Locale;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -12,17 +11,18 @@ import java.util.stream.Collectors;
 
 public class Validator {
 
-    //TODO isanEmail
-
-
     public static boolean applyValidation(Validation validation, String input) {
         boolean isValid = false;
 
         switch (validation) {
             case COUNTRY -> isValid = isValidCountryName(input);
+<<<<<<< HEAD
             case NAME -> isValid = isValidName(input);
             case EMAIL -> isValid = isValidEmail(input);
             //PHONE
+=======
+            case COMMAND -> isValid = isValidCommand(input);
+>>>>>>> Lisa
         }
 
         return isValid;
@@ -43,6 +43,7 @@ public class Validator {
 
     }
 
+<<<<<<< HEAD
     //////////////////////////////////////////////////////// Name ////////////////////////////////////////////////////
     public static Boolean isValidName(String name) {
         Pattern pattern = Pattern.compile("^[a-zA-ZÀ-ÿ\\u00f1\\u00d1]+\\s[a-zA-ZÀ-ÿ\\u00f1\\u00d1]+$");
@@ -69,6 +70,30 @@ public class Validator {
             Utils.printLikeError("Email address invalid");
             return false;
         }
+=======
+    public static Boolean isValidCommand(String input) {
+
+        input = input.toLowerCase().trim();
+
+        if (input.equals("new lead")) {
+            return true;
+        } else if (input.equals("show leads")) {
+            return true;
+        } else if (input.equals("lookup lead")) {
+            return true;
+        } else if (input.equals("convert lead")) {
+            return true;
+        } else if (input.equals("change status")) {
+            return true;
+        } else if (input.equals("exit")) {
+            return true;
+        } else {
+            Utils.clearConsole();
+            Utils.printLikeError("Input one of the valid commands");
+        }
+
+        return false;
+>>>>>>> Lisa
     }
 
 
@@ -109,6 +134,9 @@ public class Validator {
             "Virgin Islands (British)", "Virgin Islands (U.S.)", "Wallis and Futuna Islands", "Western Sahara", "Yemen",
             "Yugoslavia", "Zambia", "Zimbabwe", "Palestine"};
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> Lisa
 }

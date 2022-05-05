@@ -2,11 +2,15 @@ package Main;
 
 
 import navigation.LeadNavigation;
+<<<<<<< HEAD
 import navigation.OpportunityNavigation;
 
 import static navigation.LeadNavigation.convertLead;
 import static navigation.LeadNavigation.createNewLead;
 import static navigation.OpportunityNavigation.changeStatus;
+=======
+import navigation.Navigation;
+>>>>>>> Lisa
 
 
 public class Main {
@@ -20,12 +24,18 @@ public class Main {
         //CRea la oportunity primero y depsues la account
         //createAccount(newContact,  createOpportunity(newContact));
 
+
+
 //        LeadNavigation.createNewLead();
-//        LeadNavigation.showLeads();
+//        LeadNavigation.createNewLead();
+//       LeadNavigation.showLeads();
 //       LeadNavigation.lookUpLeadID();
 //
 //        LeadNavigation.convertLead();
+//        LeadNavigation.showLeads();
 
+
+<<<<<<< HEAD
         createNewLead();
 
         createNewLead();
@@ -33,5 +43,8 @@ public class Main {
 
         changeStatus();
 
+=======
+        Navigation.startNavigation();
+>>>>>>> Lisa
     }
 }
