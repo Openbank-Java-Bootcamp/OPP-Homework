@@ -34,5 +34,4 @@ You can display all the information you want with the next commands:
 - A Lead can be converted to an Opportunity by typing “convert id”.
 - Opportunity status can be edited using the command “close-lost id” or “close-won id”.
 
-
-
+<img src="https://github.com/Openbank-Java-Bootcamp/OPP-Homework/blob/main/Untitled%20Diagram.drawio%20(4).png" width="480" height="300" />  <img src="https://github.com/Openbank-Java-Bootcamp/OPP-Homework/blob/main/Untitled%20Diagram.drawio%20(3).png" width="450" height="300" /> 
