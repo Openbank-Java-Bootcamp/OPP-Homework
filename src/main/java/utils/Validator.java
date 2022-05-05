@@ -128,9 +128,7 @@ public class Validator {
                 return false;
             }
         }
-            return false;
 
-        }
 
 
         public static final String[] COUNTRIES_ARR = new String[]{"Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra", "Angola",
