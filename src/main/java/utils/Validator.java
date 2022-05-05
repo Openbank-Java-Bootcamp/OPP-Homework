@@ -4,20 +4,17 @@ import enums.Validation;
 
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Locale;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Validator {
-
-    //TODO isanEmail
-
 
     public static boolean applyValidation(Validation validation, String input) {
         boolean isValid = false;
 
         switch (validation) {
             case COUNTRY -> isValid = isValidCountryName(input);
+            case COMMAND -> isValid = isValidCommand(input);
         }
 
         return isValid;
@@ -36,7 +33,29 @@ public class Validator {
 
     }
 
+    public static Boolean isValidCommand(String input) {
 
+        input = input.toLowerCase().trim();
+
+        if (input.equals("new lead")) {
+            return true;
+        } else if (input.equals("show leads")) {
+            return true;
+        } else if (input.equals("lookup lead")) {
+            return true;
+        } else if (input.equals("convert lead")) {
+            return true;
+        } else if (input.equals("change status")) {
+            return true;
+        } else if (input.equals("exit")) {
+            return true;
+        } else {
+            Utils.clearConsole();
+            Utils.printLikeError("Input one of the valid commands");
+        }
+
+        return false;
+    }
 
 
     public static final String[] COUNTRIES_ARR = new String[]{"Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra", "Angola",
@@ -75,4 +94,5 @@ public class Validator {
             "United States", "United States Minor Outlying Islands", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam",
             "Virgin Islands (British)", "Virgin Islands (U.S.)", "Wallis and Futuna Islands", "Western Sahara", "Yemen",
             "Yugoslavia", "Zambia", "Zimbabwe", "Palestine"};
+
 }

@@ -5,7 +5,6 @@ import classes.Contact;
 import classes.Lead;
 import classes.Opportunity;
 import utils.Input;
-import utils.Utils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -44,7 +43,11 @@ public class LeadNavigation {
         String companyName= readString("Insert the Company name");
 
 
+
         leadList.add(new Lead(newLeadName, newLeadPhoneNumber, newLeadEmail, companyName, leadList.size()+1));
+
+        currentLead = leadList.get(leadList.size()-1);
+
         System.out.println(leadList.get(leadList.size()-1).toString());
     }
 
@@ -52,7 +55,7 @@ public class LeadNavigation {
         utils.Utils.printHeading("- Your current Leads - ");
 
         for(Lead lead : leadList) {
-            System.out.println(lead.toString());
+            if(!lead.getName().equals("Deleted Lead")) System.out.println(lead);
         }
         utils.Utils.anythingToContinue();
     }
@@ -71,6 +74,8 @@ public class LeadNavigation {
 
         createdContact = new Contact(lead);
 
+        System.out.println("Successfully created the contact " + createdContact);
+
         return createdContact;
     }
 
@@ -84,6 +89,8 @@ public class LeadNavigation {
 
         contactList.add(currentContact);
 
+        deleteLead();
+
         currentOpportunity = Opportunity.createOpportunity(currentContact);
 
         AccountNavigation.createAccount(currentContact, currentOpportunity);
@@ -92,5 +99,18 @@ public class LeadNavigation {
 
     }
 
-    //TODO method to "delete" Lead
+    public static void deleteLead(){
+
+        leadList.get(currentLead.getLeadId()-1).setName("Deleted Lead");
+
+        leadList.get(currentLead.getLeadId()-1).setPhoneNumber(0L);
+
+        leadList.get(currentLead.getLeadId()-1).setEmail("Deleted Lead email");
+
+        leadList.get(currentLead.getLeadId()-1).setCompanyName("Deleted Lead company name");
+
+        System.out.println("Successfully deleted " + currentLead);
+        System.out.println("Successfully deleted from the list " + leadList.get(currentLead.getLeadId()-1));
+
+    }
 }

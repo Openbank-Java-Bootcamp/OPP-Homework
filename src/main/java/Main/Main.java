@@ -2,6 +2,7 @@ package Main;
 
 
 import navigation.LeadNavigation;
+import navigation.Navigation;
 
 
 public class Main {
@@ -15,11 +16,17 @@ public class Main {
         //CRea la oportunity primero y depsues la account
         //createAccount(newContact,  createOpportunity(newContact));
 
+
+
 //        LeadNavigation.createNewLead();
-//        LeadNavigation.showLeads();
+//        LeadNavigation.createNewLead();
+//       LeadNavigation.showLeads();
 //       LeadNavigation.lookUpLeadID();
 //
 //        LeadNavigation.convertLead();
+//        LeadNavigation.showLeads();
 
+
+        Navigation.startNavigation();
     }
 }
