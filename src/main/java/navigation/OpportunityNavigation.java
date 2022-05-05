@@ -68,7 +68,7 @@ public class OpportunityNavigation {
         for (Opportunity opportunity : opportunityList){
             if (input.equals(opportunity.getId())){
                 foundOpportunity = opportunity;
-                System.out.println(foundOpportunity + "\nOLD STATUS: "+ foundOpportunity.getStatus().toString().toLowerCase());
+
 
                 printStatusMenu(foundOpportunity.getId());
                 newInput = readInt("-> ", 3);
@@ -89,7 +89,9 @@ public class OpportunityNavigation {
             }
         }
 
-
+            for (Opportunity opportunity : opportunityList){
+                System.out.println( "Opportunity ID: "+ opportunity.getId() + " -> Decision Maker: " +opportunity.getDecisionMaker());
+            }
 
         // Opportunity foundOpportunity = opportunityList.get(input-1);
 

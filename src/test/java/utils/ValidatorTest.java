@@ -29,11 +29,15 @@ class ValidatorTest {
         assertFalse(Validator.isValidName("M@riantonia"));
     }
 
+/*
     @Test
     public void isValidString_String_Boolean(){
-        /*assertTrue(Validator.isValidString("Maria Antonia"));
-        assertFalse(Validator.isValidString("123"));*/
+        */
+/*assertTrue(Validator.isValidString("Maria Antonia"));
+        assertFalse(Validator.isValidString("123"));*//*
+
     }
+*/
 
     @Test
     public void isValidEmail_String_Boolean(){

@@ -27,7 +27,7 @@ public class Opportunity {
     private Status status;
 
     public Opportunity(Product product, int quantity, Contact contact, Status status) {
-        this.id = UUID.randomUUID().toString();
+        this.id = shortUUID();
         this.product = product;
         this.quantity = quantity;
         this.decisionMaker = contact ;

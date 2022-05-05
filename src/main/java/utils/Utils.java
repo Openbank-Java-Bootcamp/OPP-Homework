@@ -2,9 +2,11 @@ package utils;
 
 import classes.Lead;
 
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.UUID;
 
 public class Utils {
     public static Scanner scanner = new Scanner(System.in);
@@ -63,5 +65,9 @@ public class Utils {
         scanner.next();
     }
 
-
+    public static String shortUUID() {
+        UUID uuid = UUID.randomUUID();
+        int l = ByteBuffer.wrap(uuid.toString().getBytes()).getInt();
+        return Integer.toString(l, Character.MAX_RADIX);
+    }
 }

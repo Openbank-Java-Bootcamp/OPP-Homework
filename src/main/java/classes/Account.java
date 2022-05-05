@@ -31,7 +31,7 @@ public class Account {
         this.employeeCount = employeeCount;
         this.city = city;
         this.country = country;
-        this.id = UUID.randomUUID().toString();
+        this.id = shortUUID();
     }
 
     public Account(Industry industry, int employeeCount, String city, String country, List<Contact> contactList,
@@ -42,7 +42,7 @@ public class Account {
         this.country = country;
         this.contactList = contactList;
         this.opportunityList = opportunityList;
-        this.id = UUID.randomUUID().toString();
+        this.id = shortUUID();
     }
 
 

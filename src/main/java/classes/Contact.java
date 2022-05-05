@@ -7,6 +7,8 @@ import lombok.Setter;
 
 import java.util.UUID;
 
+import static utils.Utils.shortUUID;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -14,14 +16,14 @@ import java.util.UUID;
 public class Contact extends Lead {
     private String id;
 
-    public Contact(String name, Long phoneNumber, String email, String companyName, int leadId) {
-        super(name, phoneNumber, email, companyName, leadId);
-        this.id = UUID.randomUUID().toString();
+    public Contact(String name, Long phoneNumber, String email, String companyName) {
+        super(name, phoneNumber, email, companyName);
+        this.id = shortUUID();
     }
 
     public Contact(Lead lead) {
         super(lead.getName(), lead.getPhoneNumber(), lead.getEmail(), lead.getCompanyName());
-        this.id = UUID.randomUUID().toString();
+        this.id = shortUUID();
     }
 
     @Override

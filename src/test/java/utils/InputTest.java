@@ -31,11 +31,13 @@ class InputTest {
         System.setErr(originalErr);
     }*/
 
+/*
     @Test
     public void promptTextWithValidation_StringInputListValidation_Input(){
 
         assertEquals("IronHack Bank", Input.promptTextWithValidation("This is a company name", List.of(Validation.STRING)));
     }
+*/
 
 
    /* @Test
