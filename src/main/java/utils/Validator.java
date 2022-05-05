@@ -19,6 +19,7 @@ public class Validator {
             case NAME -> isValid = isValidName(input);
             case STRING -> isValid = isValidString(input);
             case EMAIL -> isValid = isValidEmail(input);
+            case PHONE -> isValid = isValidPhoneNumber(input);
             case COMMAND -> isValid = isValidCommand(input);
         }
 
@@ -109,6 +110,25 @@ public class Validator {
             }
 
             return false;
+        }
+
+        public static Boolean isValidPhoneNumber(String input){
+
+            Pattern pattern = Pattern.compile(
+                    "^(\\+\\d{1,3}( )?)?((\\(\\d{3}\\))|\\d{3})[- .]?\\d{3}[- .]?\\d{4}$"
+                    + "|^(\\+\\d{1,3}( )?)?(\\d{3}[ ]?){2}\\d{3}$"
+                    + "|^(\\+\\d{1,3}( )?)?(\\d{3}[ ]?)(\\d{2}[ ]?){2}\\d{2}$");
+
+            Matcher matcher = pattern.matcher(input);
+
+            if (matcher.matches()) {
+                return true;
+            } else {
+                Utils.printLikeError("Invalid Phone Number");
+                return false;
+            }
+        }
+            return false;
 
         }
 
@@ -148,6 +168,7 @@ public class Validator {
                 "Turkmenistan", "Turks and Caicos Islands", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom",
                 "United States", "United States Minor Outlying Islands", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam",
                 "Virgin Islands (British)", "Virgin Islands (U.S.)", "Wallis and Futuna Islands", "Western Sahara", "Yemen",
-                "Yugoslavia", "Zambia", "Zimbabwe", "Palestine"};
+                "Yugoslavia", "Zambia", "Zimbabwe", "Palestine"
+    };
+}
 
-    }

@@ -19,4 +19,10 @@ class OpportunityTest {
         assertEquals(opportunity, createOpportunity(this.lead));
     }*/
 
+
+//    @org.junit.jupiter.api.Test
+//    void createOpportunity() {
+//        assertEquals(opportunity, lead.createOpportunity());
+//    }
+
 }
