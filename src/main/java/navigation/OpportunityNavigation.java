@@ -59,10 +59,6 @@ public class OpportunityNavigation {
 //                opportunityList.size());
 
         if(!opportunityList.isEmpty()){
-
-
-
-        boolean passedValidation = false;
         Opportunity foundOpportunity = null;
         int newInput;
 

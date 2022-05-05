@@ -15,7 +15,7 @@ import static utils.Utils.*;
 
 
 import static utils.Utils.printHeading;
-import static utils.Utils.readInt;
+
 @Getter
 @Setter
 @NoArgsConstructor

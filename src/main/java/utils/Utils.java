@@ -39,56 +39,12 @@ public class Utils {
     }
 
 
-    /////////////////////////////////// Method to catch errors from user int input /////////////////////////////////////
-
-
-    public static String readString(String prompt) {
-        String input = null;
-
-        do {
-            System.out.println(prompt);
-            try {
-                input = scanner.nextLine();
-            } catch (Exception e) {
-                System.out.println("Please enter a valid word!");
-            }
-        } while (scanner.hasNextDouble() || scanner.hasNextInt() || scanner.hasNextFloat() || scanner.hasNextByte() ||
-                scanner.hasNextLong() || scanner.hasNextBoolean());
-        return input;
-    }
-
-
-    /**
-     * Method to catch errors from user int input with limits
-     *
-     * @param prompt will be the string that appears in CRM
-     * @param min    limits
-     * @param max
-     * @return the number the user chose
-     */
-    private static int readIntLimited(String prompt, int min, int max) {
-        int input = 0;
-        do {
-            System.out.println(prompt);
-            try {
-                input = Integer.parseInt(scanner.next());
-            } catch (Exception e) {
-                System.out.println("Please enter a valid integer!");
-            }
-        } while (input < min || input > max);
-        return input;
-    }
-
-
-    ///////////////////////////// CLear console /////////////////////////////////
-
     public static void clearConsole() {
         for (int i = 0; i < 15; i++) {
             System.out.println();
         }
     }
 
-    //////////////////////////// Print separator ///////////////////////////////
     public static void printSeparator(int n) {
         for (int i = 0; i < n; i++) {
             System.out.print("-");
@@ -96,37 +52,15 @@ public class Utils {
         System.out.println();
     }
 
-    /////////////////////////// Print heading //////////////////////////////////
     public static void printHeading(String title) {
         printSeparator(30);
         System.out.println(title);
         printSeparator(30);
     }
 
-    /////////////////////////// Anything to continue ///////////////////////////
     public static void anythingToContinue() {
         System.out.println("\nPlease Enter any command to continue...");
         scanner.next();
-    }
-
-    /////////////////////////// Start program //////////////////////////////////
-    public static void startProgram() {
-        System.out.println(title);
-        anythingToContinue();
-
-    }
-
-    ////////////////////////////////New Lead Menu ////////////////////////////////////////////////
-
-    public void addNewLead(Lead newLead) {
-        leads.add(newLead);
-    }
-
-    ///////////////////////////////Show Lead Menu ///////////////////////////////////////////////
-    public void showLeads() {
-        for (Lead lead : leads) {
-            System.out.println(leads.toString());
-        }
     }
 
 

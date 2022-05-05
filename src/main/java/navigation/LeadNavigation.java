@@ -16,7 +16,6 @@ import java.util.Map;
 import static navigation.OpportunityNavigation.createOpportunity;
 import static utils.Input.promptTextWithValidation;
 import static utils.Utils.*;
-import static utils.Utils.readString;
 
 public class LeadNavigation {
 

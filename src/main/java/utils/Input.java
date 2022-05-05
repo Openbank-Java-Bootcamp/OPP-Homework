@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Scanner;
 
 import static utils.Utils.printHeading;
-import static utils.Utils.readInt;
 
 
 public class Input {
@@ -35,8 +34,6 @@ public class Input {
                     isValid = false;
                 }
             }
-
-
         }
 
         return input;
