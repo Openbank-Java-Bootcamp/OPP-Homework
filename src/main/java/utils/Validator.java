@@ -27,8 +27,6 @@ public class Validator {
     }
 
 
-    //////////////////////////////////////////////////////// Country //////////////////////////////////////////////////
-
     public static Boolean isValidCountryName(String input) {
 
         Set<String> countries = new HashSet<>(Arrays.stream(COUNTRIES_ARR).map(String::toLowerCase).collect(Collectors.toList()));
@@ -42,7 +40,6 @@ public class Validator {
 
     }
 
-    //////////////////////////////////////////////////////// Name ////////////////////////////////////////////////////
     public static Boolean isValidName(String name) {
         Pattern pattern = Pattern.compile("^[a-zA-ZÀ-ÿ\\u00f1\\u00d1]+\\s[a-zA-ZÀ-ÿ\\u00f1\\u00d1]+$");
         Matcher matcher = pattern.matcher(name);
@@ -55,7 +52,6 @@ public class Validator {
         }
     }
 
-    //////////////////////////////////////////////////////// String ////////////////////////////////////////////////////
     //todo add apostrophe and   - _ ' ´ `
     public static Boolean isValidString(String input) {
 
@@ -73,7 +69,6 @@ public class Validator {
     }
 
 
-    //////////////////////////////////////////////////////// Email ////////////////////////////////////////////////////
     public static Boolean isValidEmail(String email) {
         Pattern pattern = Pattern.compile("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
                 + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$");
@@ -127,9 +122,6 @@ public class Validator {
                 Utils.printLikeError("Invalid Phone Number");
                 return false;
             }
-        }
-            return false;
-
         }
 
 
