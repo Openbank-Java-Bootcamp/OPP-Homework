@@ -6,6 +6,7 @@ import classes.Lead;
 import classes.Opportunity;
 import enums.Validation;
 import utils.Input;
+import utils.Utils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,9 +37,7 @@ public class LeadNavigation {
         printHeading("Please input the following New Lead information");
         printSeparator(30);
 
-        //String newLeadName = readString("Insert the Lead name");
         String newLeadName = promptTextWithValidation("Insert the Lead name", List.of(Validation.NAME));
-        System.out.println("YA TA NAME");
 
 
         //todo Faltaría el Prompt int with Validation - phone number
@@ -46,9 +45,8 @@ public class LeadNavigation {
         Long newLeadPhoneNumber= Long.valueOf(123);
 
         String newLeadEmail = promptTextWithValidation("Insert the email address", List.of(Validation.EMAIL));
-        System.out.println("YA TA EMAIL");
 
-        String companyName= readString("Insert the Company name");
+        String companyName= promptTextWithValidation("Insert the Company name",List.of(Validation.STRING));
 
 
 
@@ -57,23 +55,45 @@ public class LeadNavigation {
         currentLead = leadList.get(leadList.size()-1);
 
         System.out.println(leadList.get(leadList.size()-1).toString());
+
+        Utils.anythingToContinue();
+        Utils.clearConsole();
+        Navigation.startNavigation();
     }
 
     public static void showLeads(){
-        utils.Utils.printHeading("- Your current Leads - ");
+        if (!leadList.isEmpty()) {
+            utils.Utils.printHeading("- Your current Leads - ");
 
-        for(Lead lead : leadList) {
-            if(!lead.getName().equals("Deleted Lead")) System.out.println(lead);
+            for (Lead lead : leadList) {
+                if (!lead.getName().equals("Deleted Lead")) System.out.println(lead);
+            }
+            utils.Utils.anythingToContinue();
+            Utils.clearConsole();
+            Navigation.startNavigation();
+        }  else {
+            Utils.printLikeError("No Leads in the database, please create one");
+            Utils.anythingToContinue();
+            Utils.clearConsole();
+            Navigation.startNavigation();
         }
-        utils.Utils.anythingToContinue();
     }
 
     public static void lookUpLeadID(){
-        int input = Input.promptIntWithValidation("Insert the ID you'd like to check: ", Integer.MAX_VALUE);
+        if (!leadList.isEmpty()) {
+            int input = Input.promptIntWithValidation("Insert the ID you'd like to check: ", Integer.MAX_VALUE);
 
-        System.out.println(leadList.get(input - 1).toString());
+            System.out.println(leadList.get(input - 1).toString());
 
-        utils.Utils.anythingToContinue();
+            utils.Utils.anythingToContinue();
+            Utils.clearConsole();
+            Navigation.startNavigation();
+        }  else {
+            Utils.printLikeError("No Leads in the database, please create one");
+            Utils.anythingToContinue();
+            Utils.clearConsole();
+            Navigation.startNavigation();
+        }
     }
 
 
@@ -88,28 +108,41 @@ public class LeadNavigation {
     }
 
     public static void convertLead(){
-        clearConsole();
-        int input = Input.promptIntWithCheck("Input the ID of the Lead you want to convert", leadList.size());
 
-        Lead foundLead = leadList.get(input-1);
+        if (!leadList.isEmpty()) {
+            clearConsole();
+            int input = Input.promptIntWithCheck("Input the ID of the Lead you want to convert", leadList.size());
 
-        currentContact = createContact(foundLead);
+            Lead foundLead = leadList.get(input - 1);
 
-        contactList.add(currentContact);
+            currentContact = createContact(foundLead);
 
-<<<<<<< HEAD
-        currentOpportunity = createOpportunity(currentContact);
-=======
-        deleteLead();
+            Utils.anythingToContinue();
 
-        currentOpportunity = Opportunity.createOpportunity(currentContact);
->>>>>>> Lisa
+            contactList.add(currentContact);
 
-        AccountNavigation.createAccount(currentContact, currentOpportunity);
+            currentOpportunity = createOpportunity(currentContact);
 
+            deleteLead();
+
+            Utils.anythingToContinue();
+
+            AccountNavigation.createAccount(currentContact, currentOpportunity);
+
+            Utils.anythingToContinue();
+            Utils.clearConsole();
+            Navigation.startNavigation();
+        } else {
+            Utils.printLikeError("No Leads in the database, please create one");
+            Utils.anythingToContinue();
+            Utils.clearConsole();
+            Navigation.startNavigation();
+        }
     }
 
     public static void deleteLead(){
+
+        System.out.println("Successfully deleted " + currentLead);
 
         leadList.get(currentLead.getLeadId()-1).setName("Deleted Lead");
 
@@ -119,8 +152,6 @@ public class LeadNavigation {
 
         leadList.get(currentLead.getLeadId()-1).setCompanyName("Deleted Lead company name");
 
-        System.out.println("Successfully deleted " + currentLead);
-        System.out.println("Successfully deleted from the list " + leadList.get(currentLead.getLeadId()-1));
 
     }
 }

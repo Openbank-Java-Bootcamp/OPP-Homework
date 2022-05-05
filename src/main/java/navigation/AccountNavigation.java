@@ -34,7 +34,7 @@ public class AccountNavigation {
 
         int employeeCount = promptIntWithCheck("Number of employees",  Integer.MAX_VALUE);
 
-        String city = readString("City of Account");
+        String city = Input.promptTextWithValidation("City of Account", List.of(Validation.STRING));
 
         String country = Input.promptTextWithValidation("Country of Account", List.of(Validation.COUNTRY));
 
@@ -43,7 +43,7 @@ public class AccountNavigation {
         newAccount.getContactList().add(contact);
         newAccount.getOpportunityList().add(opportunity);
 
-        System.out.println("Succesfully created" + newAccount);
+        System.out.println("Successfully created " + newAccount);
     }
 
     private static Industry selectIndustry() {

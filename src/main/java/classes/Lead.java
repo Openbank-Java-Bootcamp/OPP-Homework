@@ -25,8 +25,8 @@ public class Lead {
 
     @Override
     public String toString() {
-        return ("Lead \n ID %s, \n Name: %s, \n Phone Number: %s, " +
-                "\n Email: %s, \n Company name: %s").formatted(leadId, name, phoneNumber, email, companyName);
+        return ("Lead ID %s, \n Name: %s, \n Phone Number: %s, " +
+                "\n Email: %s, \n Company name: %s \n").formatted(leadId, name, phoneNumber, email, companyName);
 
     }
 

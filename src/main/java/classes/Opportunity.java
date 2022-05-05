@@ -26,7 +26,6 @@ public class Opportunity {
     private Contact decisionMaker;
     private Status status;
 
-    ////////////////////////////////////////////////////////////Contructors/////////////////////////////////////////
     public Opportunity(Product product, int quantity, Contact contact, Status status) {
         this.id = UUID.randomUUID().toString();
         this.product = product;
@@ -35,7 +34,6 @@ public class Opportunity {
         this.status = status;
     }
 
-    ///////////////////////////////////////////////////////////Getters ///////////////////////////////////////
     public String getId() {
         return id;
     }
@@ -44,12 +42,11 @@ public class Opportunity {
         this.status = status;
     }
 
-    ////////////////////////////////////////////////////////Override/////////////////////////////////////////////////
 
     @Override
     public String toString() {
-        return ("\n ID: %s, \n Product: %s, \n Quantity : %s, " +
-                "\n Decision Maker: %s, \n Status: %s").formatted(id, product, quantity, decisionMaker, status);
+        return ("Opportunity ID: %s \n Product: %s, \n Quantity : %s, " +
+                "\n Decision Maker: %s, \n Status: %s").formatted(id, product.toString().toLowerCase(), quantity, decisionMaker, status.toString().toLowerCase());
     }
 
 }

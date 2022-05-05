@@ -12,27 +12,28 @@ public class Navigation {
         NavigationEnum selected = null;
         selected = selectNavigation();
 
-//        switch (selected) {
-//            case NEW_LEAD -> LeadNavigation.createNewLead();
-//            case SHOW_LEADS -> LeadNavigation.showLeads();
-//            case LOOKUP_LEAD -> LeadNavigation.lookUpLeadID();
-//            case CONVERT_LEAD -> LeadNavigation.convertLead();
-//            case CHANGE_STATUS -> Opportunity.changeStatus();
-//            case EXIT -> Navigation.exit();
-//        }
-
         switch (selected) {
-            case NEW_LEAD -> System.out.println("new lead selected");
-            case SHOW_LEADS -> System.out.println("show leads selected");
-            case LOOKUP_LEAD -> System.out.println("lookup lead selected");
-            case CONVERT_LEAD -> System.out.println("convert lead selected");
-            case CHANGE_STATUS -> System.out.println("change status selected");
-            case EXIT -> System.out.println("exit selected");
+            case NEW_LEAD -> LeadNavigation.createNewLead();
+            case SHOW_LEADS -> LeadNavigation.showLeads();
+            case LOOKUP_LEAD -> LeadNavigation.lookUpLeadID();
+            case CONVERT_LEAD -> LeadNavigation.convertLead();
+            case CHANGE_STATUS -> OpportunityNavigation.changeStatus();
+            case EXIT -> Navigation.exit();
         }
+
+//        switch (selected) {
+//            case NEW_LEAD -> System.out.println("new lead selected");
+//            case SHOW_LEADS -> System.out.println("show leads selected");
+//            case LOOKUP_LEAD -> System.out.println("lookup lead selected");
+//            case CONVERT_LEAD -> System.out.println("convert lead selected");
+//            case CHANGE_STATUS -> System.out.println("change status selected");
+//            case EXIT -> System.out.println("exit selected");
+//        }
 
     }
 
     private static void exit() {
+        System.out.println("Bye!");
     }
 
     private static String commandMenu() {

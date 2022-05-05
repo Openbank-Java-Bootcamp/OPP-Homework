@@ -4,6 +4,7 @@ import classes.Contact;
 import classes.Opportunity;
 import enums.Product;
 import enums.Status;
+import enums.Validation;
 import utils.Input;
 import utils.Utils;
 
@@ -54,24 +55,55 @@ public class OpportunityNavigation {
 
     //Opcion 1
     public static void changeStatus(){
-        int input = Input.promptIntWithCheck("Input the ID of the Opportunity to change status",
-                opportunityList.size());
+//        int input = Input.promptIntWithCheck("Input the ID of the Opportunity to change status",
+//                opportunityList.size());
 
-        Opportunity foundOpportunity = opportunityList.get(input-1);
+        if(!opportunityList.isEmpty()){
 
-        System.out.println(foundOpportunity + "\nOLD STATUS: "+ foundOpportunity.getStatus());
 
-        printStatusMenu(foundOpportunity.getId());
-        input = readInt("-> ", 3);
-        if (input == 1) {
-            foundOpportunity.setStatus(OPEN);
-        } else if (input == 2) {
-            foundOpportunity.setStatus(CLOSED_WON);
-        }else if (input == 3) {
-            foundOpportunity.setStatus(CLOSED_LOST);
+
+        boolean passedValidation = false;
+        Opportunity foundOpportunity = null;
+        int newInput;
+
+        String input = Input.promptTextWithValidation("Input the ID of the Opportunity to change status",
+                List.of(Validation.STRING));
+
+        for (Opportunity opportunity : opportunityList){
+            if (input.equals(opportunity.getId())){
+                foundOpportunity = opportunity;
+                System.out.println(foundOpportunity + "\nOLD STATUS: "+ foundOpportunity.getStatus().toString().toLowerCase());
+
+                printStatusMenu(foundOpportunity.getId());
+                newInput = readInt("-> ", 3);
+
+                if (newInput == 1) {
+                    foundOpportunity.setStatus(OPEN);
+                } else if (newInput == 2) {
+                    foundOpportunity.setStatus(CLOSED_WON);
+                }else if (newInput == 3) {
+                    foundOpportunity.setStatus(CLOSED_LOST);
+                }
+
+                System.out.println(foundOpportunity + "\nNEW STATUS: "+ foundOpportunity.getStatus().toString().toLowerCase());
+
+                Utils.anythingToContinue();
+                Utils.clearConsole();
+                Navigation.startNavigation();
+            }
         }
 
-        //System.out.println(foundOpportunity + "\nNEW STATUS: "+ foundOpportunity.getStatus());
+
+
+        // Opportunity foundOpportunity = opportunityList.get(input-1);
+
+    } else {
+        Utils.printLikeError("No Opportunities in the database, please create one");
+        Utils.anythingToContinue();
+        Utils.clearConsole();
+        Navigation.startNavigation();
+    }
+
     }
 
     public static void closeLostOpportunity(String closeLost){
@@ -107,11 +139,11 @@ public class OpportunityNavigation {
 
 
     public static void printStatusMenu(String id){
-        printHeading(" \n Choose the status for opportunity" + id+ " \n ");
+        printHeading(" \n Choose the status for opportunity " + id+ " \n ");
         printSeparator(20);
         System.out.println("(1) OPEN");
-        System.out.println("(2) CLOSED_WON");
-        System.out.println("(3) CLOSED_LOST");
+        System.out.println("(2) CLOSED WON");
+        System.out.println("(3) CLOSED LOST");
     }
 
 }

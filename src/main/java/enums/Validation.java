@@ -1,9 +1,5 @@
 package enums;
 
 public enum Validation {
-<<<<<<< HEAD
-    COUNTRY, EMAIL, NAME,  PHONE,
-=======
-    COUNTRY, EMAIL, COMMAND
->>>>>>> Lisa
+    COUNTRY, EMAIL, NAME,  PHONE, COMMAND, STRING
 }
