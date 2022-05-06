@@ -8,9 +8,9 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
+import java.util.Locale;
 
-import static utils.Utils.*;
+import static utils.Utils.shortUUID;
 
 //Annotation that adds getters and setters without showing them in file
 @Getter
@@ -48,7 +48,21 @@ public class Account {
 
     @Override
     public String toString() {
-        return "Account ID %s, industry %s, number of employees %s, country %s, city %s \n %s \n %s".formatted(id,
-                industry.toString().toLowerCase(), employeeCount, country, city, contactList.get(0).toString(), opportunityList.get(0).toString());
+        return ((char) 27 + "[36m" + "\nAccount ID %s " + (char) 27 + "[39m" +
+                "\nIndustry: %s, " +
+                "\nNumber of employees: %s, " +
+                "\nCountry %s, " +
+                "\nCity %s " +
+                "\nContact List: \t%s " +
+                "\nOpportunity List: " +
+                (char) 27 + "[36m" + "\n\tpportunity ID %s " + (char) 27 + "[39m"+
+                "\n\tProduct: %s" +
+                "\n\tQuantity: %s" +
+                "\n\tDecision Maker Name:  %s " +
+                "\n\tStatus: " ).formatted(id,
+                industry.toString().toLowerCase(), employeeCount, country, city, contactList.get(0).toString(),
+                opportunityList.get(0).getId(), opportunityList.get(0).getProduct().toString().toLowerCase(), opportunityList.get(0).getQuantity(),
+                opportunityList.get(0).getDecisionMaker().getName(), opportunityList.get(0).getStatus().toString().toLowerCase());
+
     }
 }

@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ValidatorTest {
 
+
     @Test
     public void applyValidation_ValidationEnumAndStringInput_Boolean(){
         assertTrue(Validator.applyValidation(PHONE, "(202) 555-0125"));

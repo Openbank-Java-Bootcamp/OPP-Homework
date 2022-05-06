@@ -32,7 +32,6 @@ public class LeadNavigation {
 
         clearConsole();
         printHeading("Please input the following New Lead information");
-        printSeparator(30);
 
         String newLeadName = promptTextWithValidation("Insert the Lead name", List.of(Validation.NAME));
 
@@ -96,7 +95,7 @@ public class LeadNavigation {
 
         createdContact = new Contact(lead);
 
-        System.out.println("Successfully created the contact " + createdContact);
+        printHeading("\n Successfully created the contact: \n"+ createdContact);
 
         return createdContact;
     }
@@ -119,6 +118,8 @@ public class LeadNavigation {
 
             AccountNavigation.createAccount(currentContact, currentOpportunity);
 
+            deleteLead();
+
             Utils.anythingToContinue();
             Utils.clearConsole();
             Navigation.startNavigation();
@@ -131,8 +132,7 @@ public class LeadNavigation {
     }
 
     public static void deleteLead() {
-
-        System.out.println("Successfully deleted " + currentLead);
+        printHeading("\n Successfully deleted: \n"+ currentLead);
 
         leadList.get(currentLead.getLeadId() - 1).setName("Deleted Lead");
         leadList.get(currentLead.getLeadId() - 1).setPhoneNumber(0L);

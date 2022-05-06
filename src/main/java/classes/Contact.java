@@ -28,7 +28,7 @@ public class Contact extends Lead {
 
     @Override
     public String toString() {
-        return ("\n\t Contact ID: %s,\n\t  Name: %s,\n\t  Phone Number: %s,\n\t  Email: %s," +
+        return ((char) 27 + "[36m" + "\n\tContact ID: %s " + (char) 27 + "[39m" + "\n\t  Name: %s,\n\t  Phone Number: %s,\n\t  Email: %s," +
                 "\n\t  Company Name: %s").formatted(id, getName(), getPhoneNumber(), getEmail(), getCompanyName());
     }
 }

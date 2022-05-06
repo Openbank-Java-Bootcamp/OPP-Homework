@@ -34,7 +34,7 @@ public class Utils {
                 input = Integer.parseInt(scanner.nextLine());
             } catch (Exception e) {
                 input = -1;
-                System.out.println("Please enter a valid number!");
+                printLikeError("Please enter a valid number!");
             }
         } while (input < 1 || input > userChoices);
         return input;
@@ -56,12 +56,12 @@ public class Utils {
 
     public static void printHeading(String title) {
         printSeparator(30);
-        System.out.println(title);
+        System.out.println((char) 27 + "[35m" + title + (char) 27+ "[39m" );
         printSeparator(30);
     }
 
     public static void anythingToContinue() {
-        System.out.println("\nPlease Enter any command to continue...");
+        System.out.println((char) 27 + "[32m"  + "\nPlease Enter any command to continue..."  + (char) 27 +  "[39m" );
         scanner.next();
     }
 

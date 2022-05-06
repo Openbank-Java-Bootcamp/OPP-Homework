@@ -45,7 +45,7 @@ public class Opportunity {
 
     @Override
     public String toString() {
-        return ("Opportunity ID: %s \n Product: %s, \n Quantity : %s, " +
+        return ((char) 27 + "[36m" + "\n\tOpportunity ID: %s " + (char) 27 + "[39m" + "\n Product: %s, \n Quantity : %s, " +
                 "\n Decision Maker: %s, \n Status: %s").formatted(id, product.toString().toLowerCase(), quantity, decisionMaker, status.toString().toLowerCase());
     }
 

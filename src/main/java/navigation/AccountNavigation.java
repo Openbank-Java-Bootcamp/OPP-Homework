@@ -27,7 +27,6 @@ public class AccountNavigation {
 
         clearConsole();
         printHeading("Please input the following Account information");
-        printSeparator(30);
 
         industry = selectIndustry();
 
@@ -42,7 +41,7 @@ public class AccountNavigation {
         newAccount.getContactList().add(contact);
         newAccount.getOpportunityList().add(opportunity);
 
-        System.out.println("Successfully created " + newAccount);
+        printHeading("\n Successfully created: \n"+ newAccount);
     }
 
     private static Industry selectIndustry() {
