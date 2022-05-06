@@ -18,9 +18,9 @@ import static utils.Utils.clearConsole;
 import static utils.Utils.printHeading;
 
 public class OpportunityNavigation {
-    static List<Opportunity> opportunityList = new ArrayList<>();
+    public static List<Opportunity> opportunityList = new ArrayList<>();
 
-    public static Opportunity createOpportunity(Contact leadContact){
+    public static Opportunity createOpportunity(Contact leadContact) {
 
         printProductMenu();
         Product product = null;
@@ -33,7 +33,7 @@ public class OpportunityNavigation {
             product = Product.BOX;
         }
 
-        int quantity = promptIntWithCheck("Number of products for this Opportunity",  Integer.MAX_VALUE);
+        int quantity = promptIntWithCheck("Number of products for this Opportunity", Integer.MAX_VALUE);
 
         Contact lead = leadContact;
 
@@ -46,7 +46,7 @@ public class OpportunityNavigation {
         return newOpportunity;
     }
 
-    public static void changeStatus(){
+    public static void changeStatus() {
 
         if (!opportunityList.isEmpty()) {
             Opportunity foundOpportunity = null;
@@ -58,7 +58,8 @@ public class OpportunityNavigation {
             }
 
             String input = Input.promptTextWithValidation("Input the ID of the Opportunity to change status",
-                    List.of(Validation.STRING));
+                    List.of(Validation.OPPORTUNITY));
+
 
             for (Opportunity opportunity : opportunityList) {
                 if (input.equals(opportunity.getId())) {
@@ -94,7 +95,7 @@ public class OpportunityNavigation {
     }
 
 
-    public static void printProductMenu(){
+    public static void printProductMenu() {
         clearConsole();
         printHeading(" \n Choose a product for this opportunity? \n ");
         System.out.println("(1) HYBRID");

@@ -8,19 +8,20 @@ import enums.Validation;
 import utils.Input;
 import utils.Utils;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static navigation.OpportunityNavigation.createOpportunity;
 import static utils.Input.promptTextWithValidation;
-import static utils.Utils.*;
-import static utils.Validator.isValidPhoneNumber;
+import static utils.Utils.clearConsole;
+import static utils.Utils.printHeading;
 
 public class LeadNavigation {
 
-    static int counterId = 0;
-
     public static List<Lead> leadList = new ArrayList<>();
-
+    static int counterId = 0;
     static Contact currentContact;
     static Lead currentLead;
     static Opportunity currentOpportunity;
@@ -74,7 +75,7 @@ public class LeadNavigation {
 
     public static void lookUpLeadID() {
         if (!leadList.isEmpty()) {
-            int input = Input.promptIntWithValidation("Insert the ID you'd like to check: ", Integer.MAX_VALUE);
+            int input = Input.promptIntWithValidation("Insert the ID you'd like to check: ", leadList.size());
 
             System.out.println(leadList.get(input - 1).toString());
 
@@ -95,14 +96,20 @@ public class LeadNavigation {
 
         createdContact = new Contact(lead);
 
-        printHeading("\n Successfully created the contact: \n"+ createdContact);
+        printHeading("\n Successfully created the contact: \n" + createdContact);
 
         return createdContact;
     }
 
     public static void convertLead() {
 
-        if (!leadList.isEmpty()) {
+        boolean hasDeletedLead = false;
+
+        for (Lead lead : leadList) {
+            if (!lead.getName().equals("Deleted Lead")) hasDeletedLead = true;
+        }
+
+        if (!leadList.isEmpty() && hasDeletedLead) {
             clearConsole();
             int input = Input.promptIntWithCheck("Input the ID of the Lead you want to convert", leadList.size());
             Lead foundLead = leadList.get(input - 1);
@@ -132,7 +139,7 @@ public class LeadNavigation {
     }
 
     public static void deleteLead() {
-        printHeading("\n Successfully deleted: \n"+ currentLead);
+        printHeading("\n Successfully deleted: \n" + currentLead);
 
         leadList.get(currentLead.getLeadId() - 1).setName("Deleted Lead");
         leadList.get(currentLead.getLeadId() - 1).setPhoneNumber(0L);

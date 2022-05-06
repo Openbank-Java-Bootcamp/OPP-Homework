@@ -1,6 +1,8 @@
 package utils;
 
+import classes.Opportunity;
 import enums.Validation;
+import navigation.OpportunityNavigation;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -21,6 +23,7 @@ public class Validator {
             case EMAIL -> isValid = isValidEmail(input);
             case PHONE -> isValid = isValidPhoneNumber(input);
             case COMMAND -> isValid = isValidCommand(input);
+            case OPPORTUNITY -> isValid = isValidOpportunityId(input);
         }
 
         return isValid;
@@ -51,7 +54,6 @@ public class Validator {
         }
     }
 
-    //todo add apostrophe and   - _ ' ´ `
     public static Boolean isValidString(String input) {
 
         String[] noStringChar = {"%", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "/", "!", "(", ")", "+", "*", "<", ">"};
@@ -66,7 +68,15 @@ public class Validator {
         return false;
     }
 
-    //TODO Opportunity name Validation
+    public static Boolean isValidOpportunityId(String input) {
+
+        if (!OpportunityNavigation.opportunityList.isEmpty())
+            for (Opportunity opportunity : OpportunityNavigation.opportunityList) {
+                if (opportunity.getId().equals(input)) return true;
+            }
+        Utils.printLikeError("Input a valid Opportunity ID");
+        return false;
+    }
 
     public static Boolean isValidEmail(String email) {
         Pattern pattern = Pattern.compile("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
