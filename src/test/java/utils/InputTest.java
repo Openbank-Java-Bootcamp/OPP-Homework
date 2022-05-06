@@ -14,6 +14,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class InputTest {
 
+    /*
+    @Test
+    public void promptTextWithValidation_StringInputListValidation_Input(){
+
+        assertEquals("IronHack Bank", Input.promptTextWithValidation("This is a company name", List.of(Validation.STRING)));
+    }
+*/
+
+
 /*    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
@@ -31,13 +40,6 @@ class InputTest {
         System.setErr(originalErr);
     }*/
 
-/*
-    @Test
-    public void promptTextWithValidation_StringInputListValidation_Input(){
-
-        assertEquals("IronHack Bank", Input.promptTextWithValidation("This is a company name", List.of(Validation.STRING)));
-    }
-*/
 
 
    /* @Test

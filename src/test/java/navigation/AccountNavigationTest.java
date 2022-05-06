@@ -2,10 +2,13 @@ package navigation;
 
 import classes.Account;
 import classes.Contact;
+import classes.Lead;
 import classes.Opportunity;
 import enums.Product;
 import enums.Status;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static navigation.AccountNavigation.createAccount;
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,5 +23,7 @@ class AccountNavigationTest {
         Account newAccount = createAccount(newContact, newOpportunity);
         assertTrue();
     };*/
+
+
 
 }

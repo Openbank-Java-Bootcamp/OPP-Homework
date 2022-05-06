@@ -18,11 +18,8 @@ import static utils.Utils.*;
 public class OpportunityNavigation {
     static List<Opportunity> opportunityList = new ArrayList<>();
 
-    ///////////////////////////////////////////////////////New Opportunity///////////////////////////////////////
     public static Opportunity createOpportunity(Contact leadContact){
 
-
-        //Set product
         printProductMenu();
         Product product=null;
         int input = Input.promptIntWithValidation("-> ", 3);
@@ -34,13 +31,11 @@ public class OpportunityNavigation {
             product = Product.BOX;
         }
 
-        //Set quantity
         int quantity = promptIntWithCheck("Number of products for this Opportunity",  Integer.MAX_VALUE);
 
-        ///Set decision maker
         Contact lead = leadContact;
 
-        //Set status
+
         Status status = OPEN;
 
         Opportunity newOpportunity = new Opportunity(product, quantity, lead, status );
@@ -49,14 +44,7 @@ public class OpportunityNavigation {
         return newOpportunity;
     }
 
-    ///////////////////////////////////////////////////////Change Opportunity Status///////////////////////////////////////
-    // Opportunity status can be edited using the command “close-lost id” or “close-won id”
-    // where “id” is the id of the Opportunity that should be closed.
-
-    //Opcion 1
     public static void changeStatus(){
-//        int input = Input.promptIntWithCheck("Input the ID of the Opportunity to change status",
-//                opportunityList.size());
 
         if(!opportunityList.isEmpty()){
         Opportunity foundOpportunity = null;
@@ -68,7 +56,6 @@ public class OpportunityNavigation {
         for (Opportunity opportunity : opportunityList){
             if (input.equals(opportunity.getId())){
                 foundOpportunity = opportunity;
-
 
                 printStatusMenu(foundOpportunity.getId());
                 newInput = readInt("-> ", 3);
@@ -88,44 +75,20 @@ public class OpportunityNavigation {
                 Navigation.startNavigation();
             }
         }
-
             for (Opportunity opportunity : opportunityList){
                 System.out.println( "Opportunity ID: "+ opportunity.getId() + " -> Decision Maker: " +opportunity.getDecisionMaker());
             }
 
-        // Opportunity foundOpportunity = opportunityList.get(input-1);
-
-    } else {
-        Utils.printLikeError("No Opportunities in the database, please create one");
-        Utils.anythingToContinue();
-        Utils.clearConsole();
-        Navigation.startNavigation();
-    }
-
-    }
-
-    public static void closeLostOpportunity(String closeLost){
-        if(closeLost.toLowerCase() == "close-lost" ){ //is "close lost" best? (no -)
-
-            System.out.println("showing leads...");
-        }else{
-            utils.Utils.printLikeError( closeLost + " command not found");
-            //throw new IllegalArgumentException( lookUpLeadID + " command not found"); //"No command line " + "arguments found."
+        } else {
+            Utils.printLikeError("No Opportunities in the database, please create one");
+            Utils.anythingToContinue();
+            Utils.clearConsole();
+            Navigation.startNavigation();
         }
+
     }
 
 
-    public static void closeWonOpportunity(String closeWon){
-        if(closeWon.toLowerCase() == "close-won" ){
-
-            System.out.println("showing leads...");
-        }else{
-            utils.Utils.printLikeError( closeWon + " command not found");
-            //throw new IllegalArgumentException( lookUpLeadID + " command not found"); //"No command line " + "arguments found."
-        }
-    }
-
-    ///////////////////////////////////////////////////////Menus///////////////////////////////////////
     public static void printProductMenu(){
         clearConsole();
         printHeading(" \n Choose a product for this opportunity? \n ");

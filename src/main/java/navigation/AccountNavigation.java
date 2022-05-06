@@ -25,7 +25,6 @@ public class AccountNavigation {
     public static void createAccount(Contact contact, Opportunity opportunity) {
         Industry industry = null;
 
-        //TODO yo lo sacaria a este clean console o lo pondria mas pequeño
         clearConsole();
         printHeading("Please input the following Account information");
         printSeparator(30);
@@ -59,7 +58,6 @@ public class AccountNavigation {
             case 5 -> industry = Industry.OTHER;
         }
         return industry;
-
 
     }
 }

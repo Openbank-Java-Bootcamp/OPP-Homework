@@ -72,7 +72,7 @@ public class Input {
             whatWeAreSetting = promptIntWithValidation(prompt, userChoices);
 
             //asking the player if he wants to correct his choice
-            printHeading( "You have chosen ->" + whatWeAreSetting + ".\n\tIs that correct?");
+            printHeading( "You have chosen -> " + whatWeAreSetting + ".\n\tIs that correct?");
             System.out.println("(1) Yes!");
             System.out.println("(2) No, I want to correct it");
             int input = promptIntWithValidation("-> ", 2);
